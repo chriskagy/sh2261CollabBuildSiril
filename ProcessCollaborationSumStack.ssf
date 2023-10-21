@@ -300,13 +300,13 @@ cd ../process
 # Will automatically create new sequence called r_JuanSVHa, r_JuanSVO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-#register JuanSVHa -drizzle -maxstars=100 -interp=ne
-#register JuanSVO3 -drizzle -maxstars=100 -interp=ne
-register JuanSVS2 -drizzle -maxstars=100 -interp=ne
-# register JuanSVRed -drizzle -maxstars=100 -interp=ne
-# register JuanSVGreen -drizzle -maxstars=100 -interp=ne
-# register JuanSVBlue -drizzle -maxstars=100 -interp=ne
-# register JuanSVOSC -drizzle -maxstars=100 -interp=ne
+#register JuanSVHa -maxstars=100 -interp=ne
+#register JuanSVO3 -maxstars=100 -interp=ne
+register JuanSVS2 -maxstars=100 -interp=ne
+# register JuanSVRed -maxstars=100 -interp=ne
+# register JuanSVGreen -maxstars=100 -interp=ne
+# register JuanSVBlue -maxstars=100 -interp=ne
+# register JuanSVOSC -maxstars=100 -interp=ne
 
 # stack JuanSV' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
