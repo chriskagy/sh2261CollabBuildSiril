@@ -1,0 +1,320 @@
+############################################
+# Script for Siril 1.0
+# 30 August 2023
+# StackCollaborationFiles v1.0
+#
+########### COLLABORATION PROJECT STACKING SCRIPT ###########
+# Script to stack data submitted for NOVAC imaging collaboration project.
+#
+# Store the script file in your preferred Siril scripts directory
+#
+# Input data should be in a directory structure like this
+# <root>
+#   ProjectDir
+#      Person01
+#         Ha
+#            <calibrated .fit files>
+#         O3
+#            <calibrated .fit files>
+#         S2
+#         Red
+#         Green
+#         Blue
+#      Person02
+#         ...
+#
+# Calibrated .fit files from each person go into the appropriate filter directory
+#
+# The script will create ProjectDir/process to hold temp files (can be deleted)
+#
+# The script will create ProjectDir/0_Masters and a subdirectory for each filter
+# It will also create ProjectDir/0_Masters/process to hold temp files (can be deleted)
+#
+# Integrations by each person by each filter, and cumulative for each filter, are created
+# in the ProjectDir/0_Masters/<color> directories
+#
+# To run the script, launch Siril and change the working directory to ProjectDir.
+# From the Scripts menu, select ProcessCollaboration
+# 
+# Future enhancements could include:
+#   Write a DOS batch file to call script and then clean up the process directory
+#   Break this script into smaller scripts (one per person) and chain together with DOS batch file
+#
+############################################
+
+requires 1.2.0
+
+############################################
+# Copy this block for each person, change the sequence names to match
+#
+# preprocess Chris
+# Change the directory name as needed to accommodate new people
+cd Chris
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert ChrisHa -out=../../process
+cd ..
+
+cd O3
+convert ChrisO3 -out=../../process
+cd ..
+
+cd S2
+convert ChrisS2 -out=../../process
+cd ..
+
+# cd Red
+# convert ChrisRed -out=../../process
+# cd ..
+
+# cd Green
+# convert ChrisGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert ChrisBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert ChrisOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align Chris' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register ChrisHa -drizzle -maxstars=100 -interp=ne
+register ChrisO3 -drizzle -maxstars=100 -interp=ne
+register ChrisS2 -drizzle -maxstars=100 -interp=ne
+# register ChrisRed -drizzle -maxstars=100 -interp=ne
+# register ChrisGreen -drizzle -maxstars=100 -interp=ne
+# register ChrisBlue -drizzle -maxstars=100 -interp=ne
+# register ChrisOSC -drizzle -maxstars=100 -interp=ne
+
+# stack Chris' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_ChrisHa sum -out=../0_Masters/Ha/ChrisHa
+stack r_ChrisO3 sum -out=../0_Masters/O3/ChrisO3
+stack r_ChrisS2 sum -out=../0_Masters/S2/ChrisS2
+# stack r_ChrisRed sum -out=../0_Masters/Red/ChrisRed
+# stack r_ChrisGreen sum -out=../0_Masters/Green/ChrisGreen
+# stack r_ChrisBlue sum -out=../0_Masters/Blue/ChrisBlue
+# stack r_ChrisOSC sum -out=../0_Masters/OSC/ChrisOSC
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End block to be copied for each person
+###################################################################
+
+#############################
+# preprocess Texas
+# Change the directory name as needed to accommodate new people
+cd Texas
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert TexasHa -out=../../process
+cd ..
+
+cd O3
+convert TexasO3 -out=../../process
+cd ..
+
+cd S2
+convert TexasS2 -out=../../process
+cd ..
+
+# cd Red
+# convert TexasRed -out=../../process
+# cd ..
+
+# cd Green
+# convert TexasGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert TexasBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert TexasOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align Texas' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_TexasHa, r_TexasO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register TexasHa -maxstars=100 -interp=ne
+register TexasO3 -maxstars=100 -interp=ne
+register TexasS2 -maxstars=100 -interp=ne
+# register TexasRed -maxstars=100 -interp=ne
+# register TexasGreen -maxstars=100 -interp=ne
+# register TexasBlue -maxstars=100 -interp=ne
+# register TexasOSC -maxstars=100 -interp=ne
+
+# stack Texas' data. Change the comment marks to enable or disable appropriate filters
+set32bits
+stack r_TexasHa sum -out=../0_Masters/Ha/TexasHa
+stack r_TexasO3 sum -out=../0_Masters/O3/TexasO3
+stack r_TexasS2 sum -out=../0_Masters/S2/TexasS2
+# stack r_TexasRed sum -out=../0_Masters/Red/TexasRed
+# stack r_TexasGreen sum -out=../0_Masters/Green/TexasGreen
+# stack r_TexasBlue sum -out=../0_Masters/Blue/TexasBlue
+# stack r_TexasOSC sum -out=../0_Masters/OSC/TexasOSC
+
+# go up to project directory to do next person
+cd ..
+
+
+#######################
+# Process Linda's files
+#######################
+# Change the directory name as needed to accommodate new people
+cd Linda
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert LindaHa -out=../../process
+cd ..
+
+cd O3
+convert LindaO3 -out=../../process
+cd ..
+
+cd S2
+convert LindaS2 -out=../../process
+cd ..
+
+# cd Red
+# convert LindaRed -out=../../process
+# cd ..
+
+# cd Green
+# convert LindaGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert LindaBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert LindaOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align Linda data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register LindaHa -maxstars=100 -interp=ne
+register LindaO3 -maxstars=100 -interp=ne
+register LindaS2 -maxstars=100 -interp=ne
+# register LindaRed -maxstars=100 -interp=ne
+# register LindaGreen -maxstars=100 -interp=ne
+# register LindaBlue -maxstars=100 -interp=ne
+# register LindaOSC -maxstars=100 -interp=ne
+
+# stack Linda' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_LindaHa sum -out=../0_Masters/Ha/LindaHa
+stack r_LindaO3 sum -out=../0_Masters/O3/LindaO3
+stack r_LindaS2 sum -out=../0_Masters/S2/LindaS2
+# stack r_LindaRed sum -out=../0_Masters/Red/LindaRed
+# stack r_LindaGreen sum -out=../0_Masters/Green/LindaGreen
+# stack r_LindaBlue sum -out=../0_Masters/Blue/LindaBlue
+# stack r_LindaOSC sum -out=../0_Masters/OSC/LindaOSC
+
+# go up to project directory to do next person
+cd ..
+
+
+
+
+############################
+# Now stack all the filters together
+############################
+
+# Create initial sequences for each filter
+# Remove comments on Red, Green, Blue, OSC as soon as we have contributions
+#set16bits
+#cd 0_Masters
+#cd Ha
+#convert Ha -out=../process
+#cd ..
+#cd O3
+#convert O3 -out=../process
+#cd ..
+#cd S2
+#convert S2 -out=../process
+#cd ..
+
+#cd Red
+#convert Red -out=../process
+#cd ..
+#cd Green
+#convert Green -out=../process
+#cd ..
+#cd Blue
+#convert Blue -out=../process
+#cd ..
+#cd OSC
+#convert OSC -out=../process
+#cd ..
+
+
+
+# Align
+# Uncomment Red, Green, Blue, OSC as soon as we have contributions
+cd process
+#register Ha -maxstars=500
+#register O3 -maxstars=500
+#register S2 -maxstars=500
+#register Red -maxstars=500
+#register Green -maxstars=500
+#register Blue -maxstars=500
+#register OSC -maxstars=500
+
+# stack
+# Uncomment Red, Green, Blue, OSC as soon as we have contributions
+set32bits
+#stack r_Ha sum -out=../Ha/MasterHa
+#stack r_O3 sum -out=../O3/MasterO3
+#stack r_S2 sum -out=../S2/MasterS2
+#stack r_Red sum -out=../Red/MasterRed
+#stack r_Green sum -out=../Green/MasterGreen
+#stack r_Blue sum -out=../Blue/MasterBlue
+#stack r_OSC sum -out=../OSC/MasterOSC
+
+# go back to ProjectDir
+#cd ..
+#cd ..
+
+
+close

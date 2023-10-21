@@ -1,0 +1,86 @@
+############################################
+# Script for Siril 1.0
+# August 2020
+# (C) Cyril Richard / Colmic
+# StackLowersFiles v1.0
+#
+########### PREPROCESSING SCRIPT ###########
+# Script to stack lowers nebula project
+# needs calibrated files from each participant
+# separated by filter in their respective
+# directories: .\chris\Ha, .\chris\O3, etc
+#
+############################################
+
+requires 0.99.4
+
+#preprocess Chris
+cd Chris/ha
+convert ChrisHa -out=../../process
+cd ../..
+cd Chris/O3
+convert ChrisO3 -out=../../process
+cd ../..
+
+#Preprocess Juan
+cd Juan/ha
+convert JuanHa -out=../../process
+cd ../..
+cd Juan/O3
+convert JuanO3 -out=../../process
+cd ../..
+
+#Preprocess Linda
+cd Linda/ha
+convert LindaHa -out=../../process
+cd ../..
+cd Linda/O3
+convert LindaO3 -out=../../process
+cd ../..
+
+cd process
+
+#align everything
+register ChrisHa
+register ChrisO3
+register JuanHa
+register JuanO3
+register LindaHa
+register LindaO3
+
+#stack everything
+stack r_ChrisHa rej 3 3 -norm=addscale -output_norm -out=../Ha/ChrisHa
+stack r_ChrisO3 rej 3 3 -norm=addscale -output_norm -out=../O3/ChrisO3
+stack r_JuanHa rej 3 3 -norm=addscale -output_norm -out=../Ha/JuanHa
+stack r_JuanO3 rej 3 3 -norm=addscale -output_norm -out=../O3/JuanO3
+stack r_LindaHa rej 3 3 -norm=addscale -output_norm -out=../Ha/LindaHa
+stack r_LindaO3 rej 3 3 -norm=addscale -output_norm -out=../O3/LindaO3
+
+cd ..
+
+############################
+# Now stack all the filters together
+#
+# TBD
+############################
+
+#Convert
+cd Ha
+convert Ha -out=../process
+cd ..
+cd O3
+convert O3 -out=../process
+cd ..
+
+#Align
+cd process
+register Ha
+register O3
+
+#stack
+stack r_Ha rej 3 3 -norm=addscale -output_norm -out=../Ha/MasterHa
+stack r_O3 rej 3 3 -norm=addscale -output_norm -out=../O3/MasterO3
+cd ..
+
+
+close
