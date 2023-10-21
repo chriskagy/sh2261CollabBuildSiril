@@ -255,6 +255,78 @@ stack r_LindaS2 sum -out=../0_Masters/S2/LindaS2
 cd ..
 
 
+############################################
+# preprocess JuanSV
+# Change the directory name as needed to accommodate new people
+cd JuanSV
+set16bits
+
+# Each sequence needs a unique name, so change "JuanSVHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+#cd Ha
+#convert JuanSVHa -out=../../process
+#cd ..
+
+#cd O3
+#convert JuanSVO3 -out=../../process
+#cd ..
+
+cd S2
+convert JuanSVS2 -out=../../process
+cd ..
+
+# cd Red
+# convert JuanSVRed -out=../../process
+# cd ..
+
+# cd Green
+# convert JuanSVGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert JuanSVBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert JuanSVOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align JuanSV' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_JuanSVHa, r_JuanSVO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+#register JuanSVHa -drizzle -maxstars=100 -interp=ne
+#register JuanSVO3 -drizzle -maxstars=100 -interp=ne
+register JuanSVS2 -drizzle -maxstars=100 -interp=ne
+# register JuanSVRed -drizzle -maxstars=100 -interp=ne
+# register JuanSVGreen -drizzle -maxstars=100 -interp=ne
+# register JuanSVBlue -drizzle -maxstars=100 -interp=ne
+# register JuanSVOSC -drizzle -maxstars=100 -interp=ne
+
+# stack JuanSV' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+#stack r_JuanSVHa sum -out=../0_Masters/Ha/JuanSVHa
+#stack r_JuanSVO3 sum -out=../0_Masters/O3/JuanSVO3
+stack r_JuanSVS2 sum -out=../0_Masters/S2/JuanSVS2
+# stack r_JuanSVRed sum -out=../0_Masters/Red/JuanSVRed
+# stack r_JuanSVGreen sum -out=../0_Masters/Green/JuanSVGreen
+# stack r_JuanSVBlue sum -out=../0_Masters/Blue/JuanSVBlue
+# stack r_JuanSVOSC sum -out=../0_Masters/OSC/JuanSVOSC
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process JuanSV
+###################################################################
+
 
 
 ############################
