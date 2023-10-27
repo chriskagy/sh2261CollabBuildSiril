@@ -1,0 +1,260 @@
+requires 1.2.0
+
+############################################
+# Copy this block for each person, change the sequence names to match
+#
+# preprocess Chris
+# Change the directory name as needed to accommodate new people
+cd Chris
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert ChrisHa -out=../../process
+cd ..
+
+cd O3
+convert ChrisO3 -out=../../process
+cd ..
+
+cd S2
+convert ChrisS2 -out=../../process
+cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align Chris' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register ChrisHa -2pass -maxstars=100 -interp=ne
+register ChrisO3 -2pass -maxstars=100 -interp=ne
+register ChrisS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg ChrisHa -drizzle -framing=max
+seqapplyreg ChrisO3 -drizzle -framing=max
+seqapplyreg ChrisS2 -drizzle -framing=max
+
+# extract background
+seqsubsky r_ChrisHa 1
+seqsubsky r_ChrisO3 1
+seqsubsky r_ChrisS2 1
+
+# stack Chris' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack bkg_r_ChrisHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/ChrisHa
+stack bkg_r_ChrisO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/ChrisO3
+stack bkg_r_ChrisS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/ChrisS2
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End block to be copied for each person
+###################################################################
+
+#############################
+# preprocess Texas
+# Change the directory name as needed to accommodate new people
+cd Texas
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert TexasHa -out=../../process
+cd ..
+
+cd O3
+convert TexasO3 -out=../../process
+cd ..
+
+cd S2
+convert TexasS2 -out=../../process
+cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align Texas' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_TexasHa, r_TexasO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register TexasHa -2pass -maxstars=100 -interp=ne
+register TexasO3 -2pass -maxstars=100 -interp=ne
+register TexasS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg TexasHa -framing=max
+seqapplyreg TexasO3 -framing=max
+seqapplyreg TexasS2 -framing=max
+
+# stack Texas' data. Change the comment marks to enable or disable appropriate filters
+set32bits
+stack r_TexasHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/TexasHa
+stack r_TexasO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/TexasO3
+stack r_TexasS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/TexasS2
+
+
+# go up to project directory to do next person
+cd ..
+
+
+#######################
+# Process Linda's files
+#######################
+# Change the directory name as needed to accommodate new people
+cd Linda
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert LindaHa -out=../../process
+cd ..
+
+cd O3
+convert LindaO3 -out=../../process
+cd ..
+
+cd S2
+convert LindaS2 -out=../../process
+cd ..
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align Linda data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register LindaHa -2pass -maxstars=100 -interp=ne
+register LindaO3 -2pass -maxstars=100 -interp=ne
+register LindaS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg LindaHa -framing=max
+seqapplyreg LindaO3 -framing=max
+seqapplyreg LindaS2 -framing=max
+
+
+# stack Linda' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_LindaHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/LindaHa
+stack r_LindaO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/LindaO3
+stack r_LindaS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/LindaS2
+
+
+# go up to project directory to do next person
+cd ..
+
+
+############################################
+# preprocess JuanSV
+# Change the directory name as needed to accommodate new people
+cd JuanSV
+set16bits
+
+# Each sequence needs a unique name, so change "JuanSVHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+#cd Ha
+#convert JuanSVHa -out=../../process
+#cd ..
+
+#cd O3
+#convert JuanSVO3 -out=../../process
+#cd ..
+
+cd S2
+convert JuanSVS2 -out=../../process
+cd ..
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align JuanSV' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_JuanSVHa, r_JuanSVO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+#register JuanSVHa -2pass -maxstars=100 -interp=ne
+#register JuanSVO3 -2pass -maxstars=100 -interp=ne
+register JuanSVS2 -2pass -maxstars=100 -interp=ne
+#seqapplyreg JuanSVHa -framing=max
+#seqapplyreg JuanSVO3 -framing=max
+seqapplyreg JuanSVS2 -framing=max
+
+# stack JuanSV' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+#stack r_JuanSVHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/JuanSVHa
+#stack r_JuanSVO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/JuanSVO3
+stack r_JuanSVS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/JuanSVS2
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process JuanSV
+###################################################################
+
+############################################
+# preprocess SRO
+# Change the directory name as needed to accommodate new people
+cd SRO
+set16bits
+
+# Each sequence needs a unique name, so change "SROHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert SROHa -out=../../process
+cd ..
+
+cd O3
+convert SROO3 -out=../../process
+cd ..
+
+cd S2
+convert SROS2 -out=../../process
+cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align SRO' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_SROHa, r_SROO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register SROHa -2pass -maxstars=100 -interp=ne
+register SROO3 -2pass -maxstars=100 -interp=ne
+register SROS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg SROHa -framing=max
+seqapplyreg SROO3 -framing=max
+seqapplyreg SROS2 -framing=max
+
+# stack SRO' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_SROHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/SROHa
+stack r_SROO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/SROO3
+stack r_SROS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/SROS2
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process SRO
+###################################################################
+
+
+close

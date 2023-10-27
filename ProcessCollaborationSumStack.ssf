@@ -1,10 +1,11 @@
 ############################################
 # Script for Siril 1.0
-# 30 August 2023
-# StackCollaborationFiles v1.0
+# 23 October 2023
+# ProcessCollaborationSumStack v1.0
 #
 ########### COLLABORATION PROJECT STACKING SCRIPT ###########
 # Script to stack data submitted for NOVAC imaging collaboration project.
+# Uses the 'sum' methodology to optimize for speed over quality.
 #
 # Store the script file in your preferred Siril scripts directory
 #
@@ -327,7 +328,147 @@ cd ..
 # End process JuanSV
 ###################################################################
 
+############################################
+# preprocess SRO
+# Change the directory name as needed to accommodate new people
+cd SRO
+set16bits
 
+# Each sequence needs a unique name, so change "SROHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert SROHa -out=../../process
+cd ..
+
+cd O3
+convert SROO3 -out=../../process
+cd ..
+
+cd S2
+convert SROS2 -out=../../process
+cd ..
+
+# cd Red
+# convert SRORed -out=../../process
+# cd ..
+
+# cd Green
+# convert SROGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert SROBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert SROOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align SRO' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_SROHa, r_SROO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register SROHa -maxstars=100 -interp=ne
+register SROO3 -maxstars=100 -interp=ne
+register SROS2 -maxstars=100 -interp=ne
+# register SRORed -maxstars=100 -interp=ne
+# register SROGreen -maxstars=100 -interp=ne
+# register SROBlue -maxstars=100 -interp=ne
+# register SROOSC -maxstars=100 -interp=ne
+
+# stack SRO' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_SROHa sum -out=../0_Masters/Ha/SROHa
+stack r_SROO3 sum -out=../0_Masters/O3/SROO3
+stack r_SROS2 sum -out=../0_Masters/S2/SROS2
+# stack r_SRORed sum -out=../0_Masters/Red/SRORed
+# stack r_SROGreen sum -out=../0_Masters/Green/SROGreen
+# stack r_SROBlue sum -out=../0_Masters/Blue/SROBlue
+# stack r_SROOSC sum -out=../0_Masters/OSC/SROOSC
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process SRO
+###################################################################
+
+#############################
+# preprocess GowriOS
+# Change the directory name as needed to accommodate new people
+cd GowriOS330
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert GowriOS330Ha -out=../../process
+cd ..
+
+cd O3
+convert GowriOS330O3 -out=../../process
+cd ..
+
+cd S2
+convert GowriOS330S2 -out=../../process
+cd ..
+
+# cd Red
+# convert GowriOS330Red -out=../../process
+# cd ..
+
+# cd Green
+# convert GowriOS330Green -out=../../process
+# cd ..
+
+# cd Blue
+# convert GowriOS330Blue -out=../../process
+# cd ..
+
+# cd OSC
+# convert GowriOS330OSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align GowriOS330' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_GowriOS330Ha, r_GowriOS330O3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register GowriOS330Ha -maxstars=100 -interp=ne
+register GowriOS330O3 -maxstars=100 -interp=ne
+register GowriOS330S2 -maxstars=100 -interp=ne
+# register GowriOS330Red -maxstars=100 -interp=ne
+# register GowriOS330Green -maxstars=100 -interp=ne
+# register GowriOS330Blue -maxstars=100 -interp=ne
+# register GowriOS330OSC -maxstars=100 -interp=ne
+
+# stack GowriOS330' data. Change the comment marks to enable or disable appropriate filters
+set32bits
+stack r_GowriOS330Ha sum -out=../0_Masters/Ha/GowriOS330Ha
+stack r_GowriOS330O3 sum -out=../0_Masters/O3/GowriOS330O3
+stack r_GowriOS330S2 sum -out=../0_Masters/S2/GowriOS330S2
+# stack r_GowriOS330Red sum -out=../0_Masters/Red/GowriOS330Red
+# stack r_GowriOS330Green sum -out=../0_Masters/Green/GowriOS330Green
+# stack r_GowriOS330Blue sum -out=../0_Masters/Blue/GowriOS330Blue
+# stack r_GowriOS330OSC sum -out=../0_Masters/OSC/GowriOS330OSC
+
+# go up to project directory to do next person
+cd ..
+
+######
+# End process GowriOS330
+######
 
 ############################
 # Now stack all the filters together
