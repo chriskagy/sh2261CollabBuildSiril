@@ -265,13 +265,13 @@ set16bits
 # Each sequence needs a unique name, so change "JuanSVHa" as needed for new people or for appropriate filter.
 # For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
 
-#cd Ha
-#convert JuanSVHa -out=../../process
-#cd ..
+cd Ha
+convert JuanSVHa -out=../../process
+cd ..
 
-#cd O3
-#convert JuanSVO3 -out=../../process
-#cd ..
+cd O3
+convert JuanSVO3 -out=../../process
+cd ..
 
 cd S2
 convert JuanSVS2 -out=../../process
@@ -301,8 +301,8 @@ cd ../process
 # Will automatically create new sequence called r_JuanSVHa, r_JuanSVO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-#register JuanSVHa -maxstars=100 -interp=ne
-#register JuanSVO3 -maxstars=100 -interp=ne
+register JuanSVHa -maxstars=100 -interp=ne
+register JuanSVO3 -maxstars=100 -interp=ne
 register JuanSVS2 -maxstars=100 -interp=ne
 # register JuanSVRed -maxstars=100 -interp=ne
 # register JuanSVGreen -maxstars=100 -interp=ne
@@ -313,8 +313,8 @@ register JuanSVS2 -maxstars=100 -interp=ne
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-#stack r_JuanSVHa sum -out=../0_Masters/Ha/JuanSVHa
-#stack r_JuanSVO3 sum -out=../0_Masters/O3/JuanSVO3
+stack r_JuanSVHa sum -out=../0_Masters/Ha/JuanSVHa
+stack r_JuanSVO3 sum -out=../0_Masters/O3/JuanSVO3
 stack r_JuanSVS2 sum -out=../0_Masters/S2/JuanSVS2
 # stack r_JuanSVRed sum -out=../0_Masters/Red/JuanSVRed
 # stack r_JuanSVGreen sum -out=../0_Masters/Green/JuanSVGreen
