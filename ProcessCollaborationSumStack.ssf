@@ -400,6 +400,151 @@ cd ..
 # End process SRO
 ###################################################################
 
+############################################
+# preprocess TexasRBI
+# Change the directory name as needed to accommodate new people
+cd TexasRBI
+set16bits
+
+# Each sequence needs a unique name, so change "TexasRBIHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert TexasRBIHa -out=../../process
+cd ..
+
+cd O3
+convert TexasRBIO3 -out=../../process
+cd ..
+
+cd S2
+convert TexasRBIS2 -out=../../process
+cd ..
+
+# cd Red
+# convert TexasRBIRed -out=../../process
+# cd ..
+
+# cd Green
+# convert TexasRBIGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert TexasRBIBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert TexasRBIOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align TexasRBI' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_TexasRBIHa, r_TexasRBIO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register TexasRBIHa -maxstars=100 -interp=ne
+register TexasRBIO3 -maxstars=100 -interp=ne
+register TexasRBIS2 -maxstars=100 -interp=ne
+# register TexasRBIRed -maxstars=100 -interp=ne
+# register TexasRBIGreen -maxstars=100 -interp=ne
+# register TexasRBIBlue -maxstars=100 -interp=ne
+# register TexasRBIOSC -maxstars=100 -interp=ne
+
+# stack TexasRBI' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_TexasRBIHa sum -out=../0_Masters/Ha/TexasRBIHa
+stack r_TexasRBIO3 sum -out=../0_Masters/O3/TexasRBIO3
+stack r_TexasRBIS2 sum -out=../0_Masters/S2/TexasRBIS2
+# stack r_TexasRBIRed sum -out=../0_Masters/Red/TexasRBIRed
+# stack r_TexasRBIGreen sum -out=../0_Masters/Green/TexasRBIGreen
+# stack r_TexasRBIBlue sum -out=../0_Masters/Blue/TexasRBIBlue
+# stack r_TexasRBIOSC sum -out=../0_Masters/OSC/TexasRBIOSC
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process TexasRBI
+###################################################################
+
+############################################
+# preprocess SRORBI
+# Change the directory name as needed to accommodate new people
+cd SRORBI
+set16bits
+
+# Each sequence needs a unique name, so change "SRORBIHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert SRORBIHa -out=../../process
+cd ..
+
+cd O3
+convert SRORBIO3 -out=../../process
+cd ..
+
+cd S2
+convert SRORBIS2 -out=../../process
+cd ..
+
+# cd Red
+# convert SRORBIRed -out=../../process
+# cd ..
+
+# cd Green
+# convert SRORBIGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert SRORBIBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert SRORBIOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align SRORBI' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_SRORBIHa, r_SRORBIO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register SRORBIHa -maxstars=100 -interp=ne
+register SRORBIO3 -maxstars=100 -interp=ne
+register SRORBIS2 -maxstars=100 -interp=ne
+# register SRORBIRed -maxstars=100 -interp=ne
+# register SRORBIGreen -maxstars=100 -interp=ne
+# register SRORBIBlue -maxstars=100 -interp=ne
+# register SRORBIOSC -maxstars=100 -interp=ne
+
+# stack SRORBI' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_SRORBIHa sum -out=../0_Masters/Ha/SRORBIHa
+stack r_SRORBIO3 sum -out=../0_Masters/O3/SRORBIO3
+stack r_SRORBIS2 sum -out=../0_Masters/S2/SRORBIS2
+# stack r_SRORBIRed sum -out=../0_Masters/Red/SRORBIRed
+# stack r_SRORBIGreen sum -out=../0_Masters/Green/SRORBIGreen
+# stack r_SRORBIBlue sum -out=../0_Masters/Blue/SRORBIBlue
+# stack r_SRORBIOSC sum -out=../0_Masters/OSC/SRORBIOSC
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process SRORBI
+###################################################################
+
+
 #############################
 # preprocess GowriOS
 # Change the directory name as needed to accommodate new people
