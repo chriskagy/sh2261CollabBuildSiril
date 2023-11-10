@@ -485,9 +485,9 @@ cd Ha
 convert SRORBIHa -out=../../process
 cd ..
 
-cd O3
-convert SRORBIO3 -out=../../process
-cd ..
+#cd O3
+#convert SRORBIO3 -out=../../process
+#cd ..
 
 cd S2
 convert SRORBIS2 -out=../../process
@@ -518,7 +518,7 @@ cd ../process
 # Change the comment marks to enable or disable appropriate filters for each person
 
 register SRORBIHa -maxstars=100 -interp=ne
-register SRORBIO3 -maxstars=100 -interp=ne
+#register SRORBIO3 -maxstars=100 -interp=ne
 register SRORBIS2 -maxstars=100 -interp=ne
 # register SRORBIRed -maxstars=100 -interp=ne
 # register SRORBIGreen -maxstars=100 -interp=ne
@@ -530,7 +530,7 @@ register SRORBIS2 -maxstars=100 -interp=ne
 
 set32bits
 stack r_SRORBIHa sum -out=../0_Masters/Ha/SRORBIHa
-stack r_SRORBIO3 sum -out=../0_Masters/O3/SRORBIO3
+#stack r_SRORBIO3 sum -out=../0_Masters/O3/SRORBIO3
 stack r_SRORBIS2 sum -out=../0_Masters/S2/SRORBIS2
 # stack r_SRORBIRed sum -out=../0_Masters/Red/SRORBIRed
 # stack r_SRORBIGreen sum -out=../0_Masters/Green/SRORBIGreen
@@ -614,6 +614,80 @@ cd ..
 ######
 # End process GowriOS330
 ######
+
+############################################
+# preprocess GowriAP92
+# Change the directory name as needed to accommodate new people
+cd GowriAP92
+set16bits
+
+# Each sequence needs a unique name, so change "GowriAP92Ha" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert GowriAP92Ha -out=../../process
+cd ..
+
+cd O3
+convert GowriAP92O3 -out=../../process
+cd ..
+
+cd S2
+convert GowriAP92S2 -out=../../process
+cd ..
+
+# cd Red
+# convert GowriAP92Red -out=../../process
+# cd ..
+
+# cd Green
+# convert GowriAP92Green -out=../../process
+# cd ..
+
+# cd Blue
+# convert GowriAP92Blue -out=../../process
+# cd ..
+
+# cd OSC
+# convert GowriAP92OSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align GowriAP92' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_GowriAP92Ha, r_GowriAP92O3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register GowriAP92Ha -maxstars=100 -interp=ne
+register GowriAP92O3 -maxstars=100 -interp=ne
+register GowriAP92S2 -maxstars=100 -interp=ne
+# register GowriAP92Red -maxstars=100 -interp=ne
+# register GowriAP92Green -maxstars=100 -interp=ne
+# register GowriAP92Blue -maxstars=100 -interp=ne
+# register GowriAP92OSC -maxstars=100 -interp=ne
+
+# stack GowriAP92' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_GowriAP92Ha sum -out=../0_Masters/Ha/GowriAP92Ha
+stack r_GowriAP92O3 sum -out=../0_Masters/O3/GowriAP92O3
+stack r_GowriAP92S2 sum -out=../0_Masters/S2/GowriAP92S2
+# stack r_GowriAP92Red sum -out=../0_Masters/Red/GowriAP92Red
+# stack r_GowriAP92Green sum -out=../0_Masters/Green/GowriAP92Green
+# stack r_GowriAP92Blue sum -out=../0_Masters/Blue/GowriAP92Blue
+# stack r_GowriAP92OSC sum -out=../0_Masters/OSC/GowriAP92OSC
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process GowriAP92
+###################################################################
+
+
 
 ############################
 # Now stack all the filters together

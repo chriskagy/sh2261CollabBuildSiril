@@ -195,8 +195,8 @@ cd ../process
 register JuanSVHa -2pass -maxstars=100 -interp=ne
 register JuanSVO3 -2pass -maxstars=100 -interp=ne
 register JuanSVS2 -2pass -maxstars=100 -interp=ne
-#seqapplyreg JuanSVHa -framing=max
-#seqapplyreg JuanSVO3 -framing=max
+seqapplyreg JuanSVHa -framing=max
+seqapplyreg JuanSVO3 -framing=max
 seqapplyreg JuanSVS2 -framing=max
 
 # extract background
@@ -288,9 +288,9 @@ cd Ha
 convert GowriOS330Ha -out=../../process
 cd ..
 
-cd O3
-convert GowriOS330O3 -out=../../process
-cd ..
+#cd O3
+#convert GowriOS330O3 -out=../../process
+#cd ..
 
 cd S2
 convert GowriOS330S2 -out=../../process
@@ -305,15 +305,15 @@ cd ../process
 # Change the comment marks to enable or disable appropriate filters for each person
 
 register GowriOS330Ha -2pass -maxstars=100 -interp=ne
-register GowriOS330O3 -2pass -maxstars=100 -interp=ne
+#register GowriOS330O3 -2pass -maxstars=100 -interp=ne
 register GowriOS330S2 -2pass -maxstars=100 -interp=ne
 seqapplyreg GowriOS330Ha -framing=max
-seqapplyreg GowriOS330O3 -framing=max
+#seqapplyreg GowriOS330O3 -framing=max
 seqapplyreg GowriOS330S2 -framing=max
 
 # extract background
 seqsubsky r_GowriOS330Ha 1
-seqsubsky r_GowriOS330O3 1
+#seqsubsky r_GowriOS330O3 1
 seqsubsky r_GowriOS330S2 1
 
 # stack GowriOS330' data. Change the comment marks to enable or disable appropriate filters
@@ -321,7 +321,7 @@ seqsubsky r_GowriOS330S2 1
 
 set32bits
 stack bkg_r_GowriOS330Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/GowriOS330Ha
-stack bkg_r_GowriOS330O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/GowriOS330O3
+#stack bkg_r_GowriOS330O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/GowriOS330O3
 stack bkg_r_GowriOS330S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/GowriOS330S2
 
 # go up to project directory to do next person
@@ -330,6 +330,64 @@ cd ..
 ######################################################################
 # End process GowriOS330
 ###################################################################
+
+
+############################################
+# preprocess GowriAP92
+# Change the directory name as needed to accommodate new people
+cd GowriAP92
+set16bits
+
+# Each sequence needs a unique name, so change "GowriAP92Ha" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert GowriAP92Ha -out=../../process
+cd ..
+
+#cd O3
+#convert GowriAP92O3 -out=../../process
+#cd ..
+
+cd S2
+convert GowriAP92S2 -out=../../process
+cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align GowriAP92' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_GowriAP92Ha, r_GowriAP92O3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register GowriAP92Ha -2pass -maxstars=100 -interp=ne
+#register GowriAP92O3 -2pass -maxstars=100 -interp=ne
+register GowriAP92S2 -2pass -maxstars=100 -interp=ne
+seqapplyreg GowriAP92Ha -framing=max
+seqapplyreg GowriAP92O3 -framing=max
+seqapplyreg GowriAP92S2 -framing=max
+
+# extract background
+seqsubsky r_GowriAP92Ha 1
+seqsubsky r_GowriAP92O3 1
+seqsubsky r_GowriAP92S2 1
+
+# stack GowriAP92' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack bkg_r_GowriAP92Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/GowriAP92Ha
+stack bkg_r_GowriAP92O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/GowriAP92O3
+stack bkg_r_GowriAP92S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/GowriAP92S2
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process GowriOS330
+###################################################################
+
 
 ############################################
 # preprocess SRORBI
