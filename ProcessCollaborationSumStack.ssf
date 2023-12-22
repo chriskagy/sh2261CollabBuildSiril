@@ -119,6 +119,78 @@ cd ..
 # End block to be copied for each person
 ###################################################################
 
+
+#######################
+# Process ChrisSV's files
+#######################
+# Change the directory name as needed to accommodate new people
+cd ChrisSV
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+#cd Ha
+#convert ChrisSVHa -out=../../process
+#cd ..
+
+cd O3
+convert ChrisSVO3 -out=../../process
+cd ..
+
+cd S2
+convert ChrisSVS2 -out=../../process
+cd ..
+
+# cd Red
+# convert ChrisSVRed -out=../../process
+# cd ..
+
+# cd Green
+# convert ChrisSVGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert ChrisSVBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert ChrisSVOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align ChrisSV data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+#register ChrisSVHa -maxstars=100 -interp=ne
+register ChrisSVO3 -maxstars=100 -interp=ne
+register ChrisSVS2 -maxstars=100 -interp=ne
+# register ChrisSVRed -maxstars=100 -interp=ne
+# register ChrisSVGreen -maxstars=100 -interp=ne
+# register ChrisSVBlue -maxstars=100 -interp=ne
+# register ChrisSVOSC -maxstars=100 -interp=ne
+
+# stack ChrisSV' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+#stack r_ChrisSVHa sum -out=../0_Masters/Ha/ChrisSVHa
+stack r_ChrisSVO3 sum -out=../0_Masters/O3/ChrisSVO3
+stack r_ChrisSVS2 sum -out=../0_Masters/S2/ChrisSVS2
+# stack r_ChrisSVRed sum -out=../0_Masters/Red/ChrisSVRed
+# stack r_ChrisSVGreen sum -out=../0_Masters/Green/ChrisSVGreen
+# stack r_ChrisSVBlue sum -out=../0_Masters/Blue/ChrisSVBlue
+# stack r_ChrisSVOSC sum -out=../0_Masters/OSC/ChrisSVOSC
+
+# go up to project directory to do next person
+cd ..
+
+
+
 #############################
 # preprocess Texas
 # Change the directory name as needed to accommodate new people
@@ -187,70 +259,140 @@ cd ..
 
 
 #######################
-# Process Linda's files
+# Process Linda-TOA130-ASI6200's files
 #######################
 # Change the directory name as needed to accommodate new people
-cd Linda
+cd Linda-TOA130-ASI6200
 set16bits
 
 # Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
 # For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
 
 cd Ha
-convert LindaHa -out=../../process
+convert Linda-TOA130-ASI6200Ha -out=../../process
 cd ..
 
 cd O3
-convert LindaO3 -out=../../process
+convert Linda-TOA130-ASI6200O3 -out=../../process
 cd ..
 
 cd S2
-convert LindaS2 -out=../../process
+convert Linda-TOA130-ASI6200S2 -out=../../process
 cd ..
 
 # cd Red
-# convert LindaRed -out=../../process
+# convert Linda-TOA130-ASI6200Red -out=../../process
 # cd ..
 
 # cd Green
-# convert LindaGreen -out=../../process
+# convert Linda-TOA130-ASI6200Green -out=../../process
 # cd ..
 
 # cd Blue
-# convert LindaBlue -out=../../process
+# convert Linda-TOA130-ASI6200Blue -out=../../process
 # cd ..
 
 # cd OSC
-# convert LindaOSC -out=../../process
+# convert Linda-TOA130-ASI6200OSC -out=../../process
 # cd ..
 
 
 # switch to the process directory for the rest of the steps
 cd ../process
 
-# align Linda data. Add other register commands as needed to accommodate additional filters
+# align Linda-TOA130-ASI6200 data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register LindaHa -maxstars=100 -interp=ne
-register LindaO3 -maxstars=100 -interp=ne
-register LindaS2 -maxstars=100 -interp=ne
-# register LindaRed -maxstars=100 -interp=ne
-# register LindaGreen -maxstars=100 -interp=ne
-# register LindaBlue -maxstars=100 -interp=ne
-# register LindaOSC -maxstars=100 -interp=ne
+register Linda-TOA130-ASI6200Ha -maxstars=100 -interp=ne
+register Linda-TOA130-ASI6200O3 -maxstars=100 -interp=ne
+register Linda-TOA130-ASI6200S2 -maxstars=100 -interp=ne
+# register Linda-TOA130-ASI6200Red -maxstars=100 -interp=ne
+# register Linda-TOA130-ASI6200Green -maxstars=100 -interp=ne
+# register Linda-TOA130-ASI6200Blue -maxstars=100 -interp=ne
+# register Linda-TOA130-ASI6200OSC -maxstars=100 -interp=ne
 
-# stack Linda' data. Change the comment marks to enable or disable appropriate filters
+# stack Linda-TOA130-ASI6200' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack r_LindaHa sum -out=../0_Masters/Ha/LindaHa
-stack r_LindaO3 sum -out=../0_Masters/O3/LindaO3
-stack r_LindaS2 sum -out=../0_Masters/S2/LindaS2
-# stack r_LindaRed sum -out=../0_Masters/Red/LindaRed
-# stack r_LindaGreen sum -out=../0_Masters/Green/LindaGreen
-# stack r_LindaBlue sum -out=../0_Masters/Blue/LindaBlue
-# stack r_LindaOSC sum -out=../0_Masters/OSC/LindaOSC
+stack r_Linda-TOA130-ASI6200Ha sum -out=../0_Masters/Ha/Linda-TOA130-ASI6200Ha
+stack r_Linda-TOA130-ASI6200O3 sum -out=../0_Masters/O3/Linda-TOA130-ASI6200O3
+stack r_Linda-TOA130-ASI6200S2 sum -out=../0_Masters/S2/Linda-TOA130-ASI6200S2
+# stack r_Linda-TOA130-ASI6200Red sum -out=../0_Masters/Red/Linda-TOA130-ASI6200Red
+# stack r_Linda-TOA130-ASI6200Green sum -out=../0_Masters/Green/Linda-TOA130-ASI6200Green
+# stack r_Linda-TOA130-ASI6200Blue sum -out=../0_Masters/Blue/Linda-TOA130-ASI6200Blue
+# stack r_Linda-TOA130-ASI6200OSC sum -out=../0_Masters/OSC/Linda-TOA130-ASI6200OSC
+
+# go up to project directory to do next person
+cd ..
+
+
+#######################
+# Process Linda-TOA130-QHY268M's files
+#######################
+# Change the directory name as needed to accommodate new people
+cd Linda-TOA130-QHY268M
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert Linda-TOA130-QHY268MHa -out=../../process
+cd ..
+
+cd O3
+convert Linda-TOA130-QHY268MO3 -out=../../process
+cd ..
+
+cd S2
+convert Linda-TOA130-QHY268MS2 -out=../../process
+cd ..
+
+# cd Red
+# convert Linda-TOA130-QHY268MRed -out=../../process
+# cd ..
+
+# cd Green
+# convert Linda-TOA130-QHY268MGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert Linda-TOA130-QHY268MBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert Linda-TOA130-QHY268MOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align Linda-TOA130-QHY268M data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register Linda-TOA130-QHY268MHa -maxstars=100 -interp=ne
+register Linda-TOA130-QHY268MO3 -maxstars=100 -interp=ne
+register Linda-TOA130-QHY268MS2 -maxstars=100 -interp=ne
+# register Linda-TOA130-QHY268MRed -maxstars=100 -interp=ne
+# register Linda-TOA130-QHY268MGreen -maxstars=100 -interp=ne
+# register Linda-TOA130-QHY268MBlue -maxstars=100 -interp=ne
+# register Linda-TOA130-QHY268MOSC -maxstars=100 -interp=ne
+
+# stack Linda-TOA130-QHY268M' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_Linda-TOA130-QHY268MHa sum -out=../0_Masters/Ha/Linda-TOA130-QHY268MHa
+stack r_Linda-TOA130-QHY268MO3 sum -out=../0_Masters/O3/Linda-TOA130-QHY268MO3
+stack r_Linda-TOA130-QHY268MS2 sum -out=../0_Masters/S2/Linda-TOA130-QHY268MS2
+# stack r_Linda-TOA130-QHY268MRed sum -out=../0_Masters/Red/Linda-TOA130-QHY268MRed
+# stack r_Linda-TOA130-QHY268MGreen sum -out=../0_Masters/Green/Linda-TOA130-QHY268MGreen
+# stack r_Linda-TOA130-QHY268MBlue sum -out=../0_Masters/Blue/Linda-TOA130-QHY268MBlue
+# stack r_Linda-TOA130-QHY268MOSC sum -out=../0_Masters/OSC/Linda-TOA130-QHY268MOSC
 
 # go up to project directory to do next person
 cd ..
@@ -485,9 +627,9 @@ cd Ha
 convert SRORBIHa -out=../../process
 cd ..
 
-#cd O3
-#convert SRORBIO3 -out=../../process
-#cd ..
+cd O3
+convert SRORBIO3 -out=../../process
+cd ..
 
 cd S2
 convert SRORBIS2 -out=../../process
@@ -518,7 +660,7 @@ cd ../process
 # Change the comment marks to enable or disable appropriate filters for each person
 
 register SRORBIHa -maxstars=100 -interp=ne
-#register SRORBIO3 -maxstars=100 -interp=ne
+register SRORBIO3 -maxstars=100 -interp=ne
 register SRORBIS2 -maxstars=100 -interp=ne
 # register SRORBIRed -maxstars=100 -interp=ne
 # register SRORBIGreen -maxstars=100 -interp=ne
@@ -530,7 +672,7 @@ register SRORBIS2 -maxstars=100 -interp=ne
 
 set32bits
 stack r_SRORBIHa sum -out=../0_Masters/Ha/SRORBIHa
-#stack r_SRORBIO3 sum -out=../0_Masters/O3/SRORBIO3
+stack r_SRORBIO3 sum -out=../0_Masters/O3/SRORBIO3
 stack r_SRORBIS2 sum -out=../0_Masters/S2/SRORBIS2
 # stack r_SRORBIRed sum -out=../0_Masters/Red/SRORBIRed
 # stack r_SRORBIGreen sum -out=../0_Masters/Green/SRORBIGreen
@@ -687,7 +829,77 @@ cd ..
 # End process GowriAP92
 ###################################################################
 
+############################################
+# preprocess BlaineHyper
+# Change the directory name as needed to accommodate new people
+cd BlaineHyper
+set16bits
 
+# Each sequence needs a unique name, so change "BlaineHyperHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert BlaineHyperHa -out=../../process
+cd ..
+
+cd O3
+convert BlaineHyperO3 -out=../../process
+cd ..
+
+cd S2
+convert BlaineHyperS2 -out=../../process
+cd ..
+
+# cd Red
+# convert BlaineHyperRed -out=../../process
+# cd ..
+
+# cd Green
+# convert BlaineHyperGreen -out=../../process
+# cd ..
+
+# cd Blue
+# convert BlaineHyperBlue -out=../../process
+# cd ..
+
+# cd OSC
+# convert BlaineHyperOSC -out=../../process
+# cd ..
+
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# align BlaineHyper' data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_BlaineHyperHa, r_BlaineHyperO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register BlaineHyperHa -maxstars=100 -interp=ne
+register BlaineHyperO3 -maxstars=100 -interp=ne
+register BlaineHyperS2 -maxstars=100 -interp=ne
+# register BlaineHyperRed -maxstars=100 -interp=ne
+# register BlaineHyperGreen -maxstars=100 -interp=ne
+# register BlaineHyperBlue -maxstars=100 -interp=ne
+# register BlaineHyperOSC -maxstars=100 -interp=ne
+
+# stack BlaineHyper' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_BlaineHyperHa sum -out=../0_Masters/Ha/BlaineHyperHa
+stack r_BlaineHyperO3 sum -out=../0_Masters/O3/BlaineHyperO3
+stack r_BlaineHyperS2 sum -out=../0_Masters/S2/BlaineHyperS2
+# stack r_BlaineHyperRed sum -out=../0_Masters/Red/BlaineHyperRed
+# stack r_BlaineHyperGreen sum -out=../0_Masters/Green/BlaineHyperGreen
+# stack r_BlaineHyperBlue sum -out=../0_Masters/Blue/BlaineHyperBlue
+# stack r_BlaineHyperOSC sum -out=../0_Masters/OSC/BlaineHyperOSC
+
+# go up to project directory to do next person
+cd ..
+
+######################################################################
+# End process BlaineHyper
+###################################################################
 
 ############################
 # Now stack all the filters together
