@@ -1,0 +1,58 @@
+requires 1.2.0
+
+
+
+#######################
+# Process Kevin's files
+#######################
+# Change the directory name as needed to accommodate new people
+cd Kevin
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert KevinHa -out=../../process
+cd ..
+
+cd O3
+convert KevinO3 -out=../../process
+cd ..
+
+cd S2
+convert KevinS2 -out=../../process
+cd ..
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# extract background
+seqsubsky KevinHa 1
+seqsubsky KevinO3 1
+seqsubsky KevinS2 1
+
+# align Kevin data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register bkg_KevinHa -2pass -maxstars=100 -interp=ne
+register bkg_KevinO3 -2pass -maxstars=100 -interp=ne
+register bkg_KevinS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_KevinHa -framing=min
+seqapplyreg bkg_KevinO3 -framing=min
+seqapplyreg bkg_KevinS2 -framing=min
+
+# stack Kevin' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_bkg_KevinHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/KevinHa
+stack r_bkg_KevinO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/KevinO3
+stack r_bkg_KevinS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/KevinS2
+
+
+# go up to project directory to do next person
+cd ..
+
+close
