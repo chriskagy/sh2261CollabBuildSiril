@@ -27,29 +27,30 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky ChrisHa 1
+seqsubsky ChrisO3 1
+seqsubsky ChrisS2 1
+
 # align Chris' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register ChrisHa -2pass -maxstars=100 -interp=ne
-register ChrisO3 -2pass -maxstars=100 -interp=ne
-register ChrisS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg ChrisHa -drizzle -framing=max
-seqapplyreg ChrisO3 -drizzle -framing=max
-seqapplyreg ChrisS2 -drizzle -framing=max
+register bkg_ChrisHa -2pass -maxstars=100 -interp=ne
+register bkg_ChrisO3 -2pass -maxstars=100 -interp=ne
+register bkg_ChrisS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_ChrisHa -drizzle -framing=min
+seqapplyreg bkg_ChrisO3 -drizzle -framing=min
+seqapplyreg bkg_ChrisS2 -drizzle -framing=min
 
-# extract background
-seqsubsky r_ChrisHa 1
-seqsubsky r_ChrisO3 1
-seqsubsky r_ChrisS2 1
 
 # stack Chris' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_ChrisHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/ChrisHa
-stack bkg_r_ChrisO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/ChrisO3
-stack bkg_r_ChrisS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/ChrisS2
+stack r_bkg_ChrisHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/ChrisHa
+stack r_bkg_ChrisO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/ChrisO3
+stack r_bkg_ChrisS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/ChrisS2
 
 # go up to project directory to do next person
 cd ..
@@ -84,29 +85,30 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+#seqsubsky ChrisSVHa 1
+seqsubsky ChrisSVO3 1
+seqsubsky ChrisSVS2 1
+
 # align ChrisSV data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-#register ChrisSVHa -2pass -maxstars=100 -interp=ne
-register ChrisSVO3 -2pass -maxstars=100 -interp=ne
-register ChrisSVS2 -2pass -maxstars=100 -interp=ne
-#seqapplyreg ChrisSVHa -framing=max
-seqapplyreg ChrisSVO3 -framing=max
-seqapplyreg ChrisSVS2 -framing=max
+#register bkg_ChrisSVHa -2pass -maxstars=100 -interp=ne
+register bkg_ChrisSVO3 -2pass -maxstars=100 -interp=ne
+register bkg_ChrisSVS2 -2pass -maxstars=100 -interp=ne
+#seqapplyreg bkg_ChrisSVHa -framing=min
+seqapplyreg bkg_ChrisSVO3 -framing=min
+seqapplyreg bkg_ChrisSVS2 -framing=min
 
-# extract background
-#seqsubsky r_ChrisSVHa 1
-seqsubsky r_ChrisSVO3 1
-seqsubsky r_ChrisSVS2 1
 
 # stack ChrisSV' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-#stack bkg_r_ChrisSVHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/ChrisSVHa
-stack bkg_r_ChrisSVO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/ChrisSVO3
-stack bkg_r_ChrisSVS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/ChrisSVS2
+#stack r_bkg_ChrisSVHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/ChrisSVHa
+stack r_bkg_ChrisSVO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/ChrisSVO3
+stack r_bkg_ChrisSVS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/ChrisSVS2
 
 
 # go up to project directory to do next person
@@ -139,27 +141,27 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky TexasHa 1
+seqsubsky TexasO3 1
+seqsubsky TexasS2 1
+
 # align Texas' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_TexasHa, r_TexasO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register TexasHa -2pass -maxstars=100 -interp=ne
-register TexasO3 -2pass -maxstars=100 -interp=ne
-register TexasS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg TexasHa -framing=max
-seqapplyreg TexasO3 -framing=max
-seqapplyreg TexasS2 -framing=max
-
-# extract background
-seqsubsky r_TexasHa 1
-seqsubsky r_TexasO3 1
-seqsubsky r_TexasS2 1
+register bkg_TexasHa -2pass -maxstars=100 -interp=ne
+register bkg_TexasO3 -2pass -maxstars=100 -interp=ne
+register bkg_TexasS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_TexasHa -framing=min
+seqapplyreg bkg_TexasO3 -framing=min
+seqapplyreg bkg_TexasS2 -framing=min
 
 # stack Texas' data. Change the comment marks to enable or disable appropriate filters
 set32bits
-stack bkg_r_TexasHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/TexasHa
-stack bkg_r_TexasO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/TexasO3
-stack bkg_r_TexasS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/TexasS2
+stack r_bkg_TexasHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/TexasHa
+stack r_bkg_TexasO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/TexasO3
+stack r_bkg_TexasS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/TexasS2
 
 
 # go up to project directory to do next person
@@ -191,29 +193,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky Linda-TOA130-ASI6200Ha 1
+seqsubsky Linda-TOA130-ASI6200O3 1
+seqsubsky Linda-TOA130-ASI6200S2 1
+
 # align Linda-TOA130-ASI6200 data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register Linda-TOA130-ASI6200Ha -2pass -maxstars=100 -interp=ne
-register Linda-TOA130-ASI6200O3 -2pass -maxstars=100 -interp=ne
-register Linda-TOA130-ASI6200S2 -2pass -maxstars=100 -interp=ne
-seqapplyreg Linda-TOA130-ASI6200Ha -framing=max
-seqapplyreg Linda-TOA130-ASI6200O3 -framing=max
-seqapplyreg Linda-TOA130-ASI6200S2 -framing=max
-
-# extract background
-seqsubsky r_Linda-TOA130-ASI6200Ha 1
-seqsubsky r_Linda-TOA130-ASI6200O3 1
-seqsubsky r_Linda-TOA130-ASI6200S2 1
+register bkg_Linda-TOA130-ASI6200Ha -2pass -maxstars=100 -interp=ne
+register bkg_Linda-TOA130-ASI6200O3 -2pass -maxstars=100 -interp=ne
+register bkg_Linda-TOA130-ASI6200S2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_Linda-TOA130-ASI6200Ha -framing=min
+seqapplyreg bkg_Linda-TOA130-ASI6200O3 -framing=min
+seqapplyreg bkg_Linda-TOA130-ASI6200S2 -framing=min
 
 # stack Linda-TOA130-ASI6200' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_Linda-TOA130-ASI6200Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/Linda-TOA130-ASI6200Ha
-stack bkg_r_Linda-TOA130-ASI6200O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/Linda-TOA130-ASI6200O3
-stack bkg_r_Linda-TOA130-ASI6200S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/Linda-TOA130-ASI6200S2
+stack r_bkg_Linda-TOA130-ASI6200Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/Linda-TOA130-ASI6200Ha
+stack r_bkg_Linda-TOA130-ASI6200O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/Linda-TOA130-ASI6200O3
+stack r_bkg_Linda-TOA130-ASI6200S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/Linda-TOA130-ASI6200S2
 
 
 # go up to project directory to do next person
@@ -245,29 +247,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky Linda-TOA130-QHY268MHa 1
+seqsubsky Linda-TOA130-QHY268MO3 1
+seqsubsky Linda-TOA130-QHY268MS2 1
+
 # align Linda-TOA130-QHY268M data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register Linda-TOA130-QHY268MHa -2pass -maxstars=100 -interp=ne
-register Linda-TOA130-QHY268MO3 -2pass -maxstars=100 -interp=ne
-register Linda-TOA130-QHY268MS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg Linda-TOA130-QHY268MHa -framing=max
-seqapplyreg Linda-TOA130-QHY268MO3 -framing=max
-seqapplyreg Linda-TOA130-QHY268MS2 -framing=max
-
-# extract background
-seqsubsky r_Linda-TOA130-QHY268MHa 1
-seqsubsky r_Linda-TOA130-QHY268MO3 1
-seqsubsky r_Linda-TOA130-QHY268MS2 1
+register bkg_Linda-TOA130-QHY268MHa -2pass -maxstars=100 -interp=ne
+register bkg_Linda-TOA130-QHY268MO3 -2pass -maxstars=100 -interp=ne
+register bkg_Linda-TOA130-QHY268MS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_Linda-TOA130-QHY268MHa -framing=min
+seqapplyreg bkg_Linda-TOA130-QHY268MO3 -framing=min
+seqapplyreg bkg_Linda-TOA130-QHY268MS2 -framing=min
 
 # stack Linda-TOA130-QHY268M' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_Linda-TOA130-QHY268MHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/Linda-TOA130-QHY268MHa
-stack bkg_r_Linda-TOA130-QHY268MO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/Linda-TOA130-QHY268MO3
-stack bkg_r_Linda-TOA130-QHY268MS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/Linda-TOA130-QHY268MS2
+stack r_bkg_Linda-TOA130-QHY268MHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/Linda-TOA130-QHY268MHa
+stack r_bkg_Linda-TOA130-QHY268MO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/Linda-TOA130-QHY268MO3
+stack r_bkg_Linda-TOA130-QHY268MS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/Linda-TOA130-QHY268MS2
 
 
 # go up to project directory to do next person
@@ -299,29 +301,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky JuanSVHa 1
+seqsubsky JuanSVO3 1
+seqsubsky JuanSVS2 1
+
 # align JuanSV' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_JuanSVHa, r_JuanSVO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register JuanSVHa -2pass -maxstars=100 -interp=ne
-register JuanSVO3 -2pass -maxstars=100 -interp=ne
-register JuanSVS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg JuanSVHa -framing=max
-seqapplyreg JuanSVO3 -framing=max
-seqapplyreg JuanSVS2 -framing=max
-
-# extract background
-seqsubsky r_JuanSVHa 1
-seqsubsky r_JuanSVO3 1
-seqsubsky r_JuanSVS2 1
+register bkg_JuanSVHa -2pass -maxstars=100 -interp=ne
+register bkg_JuanSVO3 -2pass -maxstars=100 -interp=ne
+register bkg_JuanSVS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_JuanSVHa -framing=min
+seqapplyreg bkg_JuanSVO3 -framing=min
+seqapplyreg bkg_JuanSVS2 -framing=min
 
 # stack JuanSV' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_JuanSVHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/JuanSVHa
-stack bkg_r_JuanSVO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/JuanSVO3
-stack bkg_r_JuanSVS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/JuanSVS2
+stack r_bkg_JuanSVHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/JuanSVHa
+stack r_bkg_JuanSVO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/JuanSVO3
+stack r_bkg_JuanSVS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/JuanSVS2
 
 # go up to project directory to do next person
 cd ..
@@ -355,29 +357,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky SROHa 1
+seqsubsky SROO3 1
+seqsubsky SROS2 1
+
 # align SRO' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_SROHa, r_SROO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register SROHa -2pass -maxstars=100 -interp=ne
-register SROO3 -2pass -maxstars=100 -interp=ne
-register SROS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg SROHa -framing=max
-seqapplyreg SROO3 -framing=max
-seqapplyreg SROS2 -framing=max
-
-# extract background
-seqsubsky r_SROHa 1
-seqsubsky r_SROO3 1
-seqsubsky r_SROS2 1
+register bkg_SROHa -2pass -maxstars=100 -interp=ne
+register bkg_SROO3 -2pass -maxstars=100 -interp=ne
+register bkg_SROS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_SROHa -framing=min
+seqapplyreg bkg_SROO3 -framing=min
+seqapplyreg bkg_SROS2 -framing=min
 
 # stack SRO' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_SROHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/SROHa
-stack bkg_r_SROO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/SROO3
-stack bkg_r_SROS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/SROS2
+stack r_bkg_SROHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/SROHa
+stack r_bkg_SROO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/SROO3
+stack r_bkg_SROS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/SROS2
 
 # go up to project directory to do next person
 cd ..
@@ -411,29 +413,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky GowriOS330Ha 1
+seqsubsky GowriOS330O3 1
+seqsubsky GowriOS330S2 1
+
 # align GowriOS330' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_GowriOS330Ha, r_GowriOS330O3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register GowriOS330Ha -2pass -maxstars=100 -interp=ne
-register GowriOS330O3 -2pass -maxstars=100 -interp=ne
-register GowriOS330S2 -2pass -maxstars=100 -interp=ne
-seqapplyreg GowriOS330Ha -framing=max
-seqapplyreg GowriOS330O3 -framing=max
-seqapplyreg GowriOS330S2 -framing=max
-
-# extract background
-seqsubsky r_GowriOS330Ha 1
-seqsubsky r_GowriOS330O3 1
-seqsubsky r_GowriOS330S2 1
+register bkg_GowriOS330Ha -2pass -maxstars=100 -interp=ne
+register bkg_GowriOS330O3 -2pass -maxstars=100 -interp=ne
+register bkg_GowriOS330S2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_GowriOS330Ha -framing=min
+seqapplyreg bkg_GowriOS330O3 -framing=min
+seqapplyreg bkg_GowriOS330S2 -framing=min
 
 # stack GowriOS330' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_GowriOS330Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/GowriOS330Ha
-stack bkg_r_GowriOS330O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/GowriOS330O3
-stack bkg_r_GowriOS330S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/GowriOS330S2
+stack r_bkg_GowriOS330Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/GowriOS330Ha
+stack r_bkg_GowriOS330O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/GowriOS330O3
+stack r_bkg_GowriOS330S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/GowriOS330S2
 
 # go up to project directory to do next person
 cd ..
@@ -468,29 +470,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky GowriAP92Ha 1
+seqsubsky GowriAP92O3 1
+seqsubsky GowriAP92S2 1
+
 # align GowriAP92' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_GowriAP92Ha, r_GowriAP92O3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register GowriAP92Ha -2pass -maxstars=100 -interp=ne
-register GowriAP92O3 -2pass -maxstars=100 -interp=ne
-register GowriAP92S2 -2pass -maxstars=100 -interp=ne
-seqapplyreg GowriAP92Ha -framing=max
-seqapplyreg GowriAP92O3 -framing=max
-seqapplyreg GowriAP92S2 -framing=max
-
-# extract background
-seqsubsky r_GowriAP92Ha 1
-seqsubsky r_GowriAP92O3 1
-seqsubsky r_GowriAP92S2 1
+register bkg_GowriAP92Ha -2pass -maxstars=100 -interp=ne
+register bkg_GowriAP92O3 -2pass -maxstars=100 -interp=ne
+register bkg_GowriAP92S2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_GowriAP92Ha -framing=min
+seqapplyreg bkg_GowriAP92O3 -framing=min
+seqapplyreg bkg_GowriAP92S2 -framing=min
 
 # stack GowriAP92' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_GowriAP92Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/GowriAP92Ha
-stack bkg_r_GowriAP92O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/GowriAP92O3
-stack bkg_r_GowriAP92S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/GowriAP92S2
+stack r_bkg_GowriAP92Ha rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/GowriAP92Ha
+stack r_bkg_GowriAP92O3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/GowriAP92O3
+stack r_bkg_GowriAP92S2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/GowriAP92S2
 
 # go up to project directory to do next person
 cd ..
@@ -525,29 +527,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky SRORBIHa 1
+seqsubsky SRORBIO3 1
+seqsubsky SRORBIS2 1
+
 # align SRORBI' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_SRORBIHa, r_SRORBIO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register SRORBIHa -2pass -maxstars=100 -interp=ne
-register SRORBIO3 -2pass -maxstars=100 -interp=ne
-register SRORBIS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg SRORBIHa -framing=max
-seqapplyreg SRORBIO3 -framing=max
-seqapplyreg SRORBIS2 -framing=max
-
-# extract background
-seqsubsky r_SRORBIHa 1
-seqsubsky r_SRORBIO3 1
-seqsubsky r_SRORBIS2 1
+register bkg_SRORBIHa -2pass -maxstars=100 -interp=ne
+register bkg_SRORBIO3 -2pass -maxstars=100 -interp=ne
+register bkg_SRORBIS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_SRORBIHa -framing=min
+seqapplyreg bkg_SRORBIO3 -framing=min
+seqapplyreg bkg_SRORBIS2 -framing=min
 
 # stack SRORBI' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_SRORBIHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/SRORBIHa
-stack bkg_r_SRORBIO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/SRORBIO3
-stack bkg_r_SRORBIS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/SRORBIS2
+stack r_bkg_SRORBIHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/SRORBIHa
+stack r_bkg_SRORBIO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/SRORBIO3
+stack r_bkg_SRORBIS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/SRORBIS2
 
 # go up to project directory to do next person
 cd ..
@@ -581,29 +583,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky TexasRBIHa 1
+seqsubsky TexasRBIO3 1
+seqsubsky TexasRBIS2 1
+
 # align TexasRBI' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_TexasRBIHa, r_TexasRBIO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register TexasRBIHa -2pass -maxstars=100 -interp=ne
-register TexasRBIO3 -2pass -maxstars=100 -interp=ne
-register TexasRBIS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg TexasRBIHa -framing=max
-seqapplyreg TexasRBIO3 -framing=max
-seqapplyreg TexasRBIS2 -framing=max
-
-# extract background
-seqsubsky r_TexasRBIHa 1
-seqsubsky r_TexasRBIO3 1
-seqsubsky r_TexasRBIS2 1
+register bkg_TexasRBIHa -2pass -maxstars=100 -interp=ne
+register bkg_TexasRBIO3 -2pass -maxstars=100 -interp=ne
+register bkg_TexasRBIS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_TexasRBIHa -framing=min
+seqapplyreg bkg_TexasRBIO3 -framing=min
+seqapplyreg bkg_TexasRBIS2 -framing=min
 
 # stack TexasRBI' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_TexasRBIHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/TexasRBIHa
-stack bkg_r_TexasRBIO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/TexasRBIO3
-stack bkg_r_TexasRBIS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/TexasRBIS2
+stack r_bkg_TexasRBIHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/TexasRBIHa
+stack r_bkg_TexasRBIO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/TexasRBIO3
+stack r_bkg_TexasRBIS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/TexasRBIS2
 
 # go up to project directory to do next person
 cd ..
@@ -637,29 +639,29 @@ cd ..
 # switch to the process directory for the rest of the steps
 cd ../process
 
+# extract background
+seqsubsky BlaineHyperHa 1
+seqsubsky BlaineHyperO3 1
+seqsubsky BlaineHyperS2 1
+
 # align BlaineHyper' data. Add other register commands as needed to accommodate additional filters
 # Will automatically create new sequence called r_BlaineHyperHa, r_BlaineHyperO3, etc
 # Change the comment marks to enable or disable appropriate filters for each person
 
-register BlaineHyperHa -2pass -maxstars=100 -interp=ne
-register BlaineHyperO3 -2pass -maxstars=100 -interp=ne
-register BlaineHyperS2 -2pass -maxstars=100 -interp=ne
-seqapplyreg BlaineHyperHa -framing=max
-seqapplyreg BlaineHyperO3 -framing=max
-seqapplyreg BlaineHyperS2 -framing=max
-
-# extract background
-seqsubsky r_BlaineHyperHa 1
-seqsubsky r_BlaineHyperO3 1
-seqsubsky r_BlaineHyperS2 1
+register bkg_BlaineHyperHa -2pass -maxstars=100 -interp=ne
+register bkg_BlaineHyperO3 -2pass -maxstars=100 -interp=ne
+register bkg_BlaineHyperS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_BlaineHyperHa -framing=min
+seqapplyreg bkg_BlaineHyperO3 -framing=min
+seqapplyreg bkg_BlaineHyperS2 -framing=min
 
 # stack BlaineHyper' data. Change the comment marks to enable or disable appropriate filters
 # change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
 
 set32bits
-stack bkg_r_BlaineHyperHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/BlaineHyperHa
-stack bkg_r_BlaineHyperO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/BlaineHyperO3
-stack bkg_r_BlaineHyperS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/BlaineHyperS2
+stack r_bkg_BlaineHyperHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/BlaineHyperHa
+stack r_bkg_BlaineHyperO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/BlaineHyperO3
+stack r_bkg_BlaineHyperS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/BlaineHyperS2
 
 # go up to project directory to do next person
 cd ..
@@ -668,5 +670,111 @@ cd ..
 # End process BlaineHyper
 ###################################################################
 
+
+#######################
+# Process Alastair's files
+#######################
+# Change the directory name as needed to accommodate new people
+cd Alastair
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert AlastairHa -out=../../process
+cd ..
+
+cd O3
+convert AlastairO3 -out=../../process
+cd ..
+
+cd S2
+convert AlastairS2 -out=../../process
+cd ..
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# extract background
+seqsubsky AlastairHa 1
+seqsubsky AlastairO3 1
+seqsubsky AlastairS2 1
+
+# align Alastair data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register bkg_AlastairHa -2pass -maxstars=100 -interp=ne
+register bkg_AlastairO3 -2pass -maxstars=100 -interp=ne
+register bkg_AlastairS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_AlastairHa -framing=min
+seqapplyreg bkg_AlastairO3 -framing=min
+seqapplyreg bkg_AlastairS2 -framing=min
+
+# stack Alastair' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_bkg_AlastairHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/AlastairHa
+stack r_bkg_AlastairO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/AlastairO3
+stack r_bkg_AlastairS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/AlastairS2
+
+
+# go up to project directory to do next person
+cd ..
+
+#######################
+# Process Kevin's files
+#######################
+# Change the directory name as needed to accommodate new people
+cd Kevin
+set16bits
+
+# Each sequence needs a unique name, so change "ChrisHa" as needed for new people or for appropriate filter.
+# For example, if Chris provides Blue filter data, create a convert statement with sequence ChrisBlue
+
+cd Ha
+convert KevinHa -out=../../process
+cd ..
+
+cd O3
+convert KevinO3 -out=../../process
+cd ..
+
+cd S2
+convert KevinS2 -out=../../process
+cd ..
+
+# switch to the process directory for the rest of the steps
+cd ../process
+
+# extract background
+seqsubsky KevinHa 1
+seqsubsky KevinO3 1
+seqsubsky KevinS2 1
+
+# align Kevin data. Add other register commands as needed to accommodate additional filters
+# Will automatically create new sequence called r_ChrisHa, r_ChrisO3, etc
+# Change the comment marks to enable or disable appropriate filters for each person
+
+register bkg_KevinHa -2pass -maxstars=100 -interp=ne
+register bkg_KevinO3 -2pass -maxstars=100 -interp=ne
+register bkg_KevinS2 -2pass -maxstars=100 -interp=ne
+seqapplyreg bkg_KevinHa -framing=min
+seqapplyreg bkg_KevinO3 -framing=min
+seqapplyreg bkg_KevinS2 -framing=min
+
+# stack Kevin' data. Change the comment marks to enable or disable appropriate filters
+# change the OUTPUT DIRECTORY names and the SEQUENCE NAMES on each command for a new person
+
+set32bits
+stack r_bkg_KevinHa rej 3 3 -norm=addscale -output_norm -out=../0_Masters/Ha/KevinHa
+stack r_bkg_KevinO3 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/O3/KevinO3
+stack r_bkg_KevinS2 rej 3 3 -norm=addscale -output_norm -out=../0_Masters/S2/KevinS2
+
+
+# go up to project directory to do next person
+cd ..
 
 close
